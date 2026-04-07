@@ -21,6 +21,7 @@ type InlineProviderConfig = {
 
 const OPENAI_CODEX_GPT_53_MODEL_ID = "gpt-5.3-codex";
 const OPENAI_CODEX_GPT_53_SPARK_MODEL_ID = "gpt-5.3-codex-spark";
+const OPENAI_CODEX_GPT_54_MODEL_ID = "gpt-5.4";
 
 const OPENAI_CODEX_TEMPLATE_MODEL_IDS = ["gpt-5.2-codex"] as const;
 
@@ -44,7 +45,8 @@ function resolveOpenAICodexGpt53FallbackModel(
   const lower = trimmedModelId.toLowerCase();
   const isGpt53 = lower === OPENAI_CODEX_GPT_53_MODEL_ID;
   const isSpark = lower === OPENAI_CODEX_GPT_53_SPARK_MODEL_ID;
-  if (!isGpt53 && !isSpark) {
+  const isGpt54 = lower === OPENAI_CODEX_GPT_54_MODEL_ID;
+  if (!isGpt53 && !isSpark && !isGpt54) {
     return undefined;
   }
 
